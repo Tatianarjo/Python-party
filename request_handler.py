@@ -61,61 +61,28 @@ class HandleRequests(BaseHTTPRequestHandler):
             else:
                 response = f"{get_all_animals()}"
 
-            self.wfile.write(response.encode())
+        elif resource == "locations":
+            if id is not None:
+                response = f"{get_single_location(id)}"
 
-            if self.path == "/animals":
-                response = get_all_animals()
             else:
-                response = []
+                response = f"{get_all_locations()}"         
 
-
-        def do_GET(self):
-            self._set_headers(200)
-            response = {}  # Default response
-
-             # Parse the URL and capture the tuple that is returned
-            (resource, id) = self.parse_url(self.path)
-
-            if resource == "locations":
-                if id is not None:
-                    response = f"{get_single_location(id)}"
-
-                else:
-                    response = f"{get_all_locations()}"
-
-            self.wfile.write(response.encode())  
-
-        def do_GET(self):
-            self._set_headers(200)
-        response = {}  # Default response
-
-        # Parse the URL and capture the tuple that is returned
-        (resource, id) = self.parse_url(self.path)
-
-        if resource == "employees":
+        elif resource == "employees":
             if id is not None:
                 response = f"{get_single_employee(id)}"
 
             else:
                 response = f"{get_all_employees()}"
 
-        self.wfile.write(response.encode())
-
-        def do_GET(self):
-            self._set_headers(200)
-        response = {}  # Default response
-
-        # Parse the URL and capture the tuple that is returned
-        (resource, id) = self.parse_url(self.path)
-
-        if resource == "customers":
+        elif resource == "customers":
             if id is not None:
                 response = f"{get_single_customer(id)}"
 
             else:
                 response = f"{get_all_customers()}"
 
-        self.wfile.write(response.encode())
+        self.wfile.write(f"{response}".encode())
 
   
 
