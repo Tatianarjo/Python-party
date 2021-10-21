@@ -1,5 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from animals import get_all_animals, get_single_animal, create_animal
+from animals import get_all_animals, get_single_animal, create_animal, delete_animal
 import json
 from locations import get_all_locations, get_single_location, create_location
 from employees import get_all_employees, get_single_employee, create_employee
@@ -125,6 +125,20 @@ class HandleRequests(BaseHTTPRequestHandler):
         self.wfile.write(f"{new_employee}".encode())
         self.wfile.write(f"{new_customer}".encode())
 
+    def do_DELETE(self):
+    # Set a 204 response code
+        self._set_headers(204)
+
+    # Parse the URL
+        (resource, id) = self.parse_url(self.path)
+
+    # Delete a single animal from the list
+        if resource == "animals":
+            delete_animal(id)
+
+    # Encode the new animal and send in response
+        self.wfile.write("".encode())
+
     # Here's a method on the class that overrides the parent's method.
     # It handles any PUT request.
     def do_PUT(self):
@@ -140,3 +154,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

@@ -42,3 +42,5 @@ def create_customer(customer):
   CUSTOMERS.append(customer)
 
   return customer
+
+  
