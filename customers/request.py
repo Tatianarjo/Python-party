@@ -8,6 +8,11 @@ CUSTOMERS = [
       "id": 2,
       "name": "Lindsay Vanderberg",
       "address": "584 10th Avenue"
+    },
+    {
+      "id": 3,
+      "name": "Cherice Toliver",
+      "address": "2021 East Main Street"
     }
 ]
 
@@ -43,4 +48,12 @@ def create_customer(customer):
 
   return customer
 
-  
+def delete_customer(id):
+  customer_index = -1
+
+  for index, customer in enumerate(CUSTOMERS):
+        if customer["id"] == id:
+            customer_index = index
+
+  if customer_index >= 0:
+    CUSTOMERS.pop(customer_index)  
