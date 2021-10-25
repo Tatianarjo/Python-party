@@ -3,7 +3,7 @@ from animals import get_all_animals, get_single_animal, create_animal, delete_an
 import json
 from locations import get_all_locations, get_single_location, create_location, delete_location
 from employees import get_all_employees, get_single_employee, create_employee, delete_employee
-from customers import get_all_customers, get_single_customer, create_customer, delete_customer
+from customers import get_all_customers, get_single_customer, create_customer, delete_customer, update_customer
 
 # Here's a class. It inherits from another class.
 # For now, think of a class as a container for functions that
@@ -163,7 +163,11 @@ class HandleRequests(BaseHTTPRequestHandler):
         if resource == "animals":
             update_animal(id, post_body)
 
+        if resource == "customers":
+            update_customer(id, post_body)
+
     # Encode the new animal and send in response
+        self.wfile.write("".encode())
         self.wfile.write("".encode())
 
 # This function is not inside the class. It is the starting

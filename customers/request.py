@@ -2,26 +2,31 @@ CUSTOMERS = [
     {
       "id": 1,
       "name": "Hannah Hall",
-      "address": "7002 Chestnut Ct"
+      "address": "7002 Chestnut Ct",
+      "email": "hannah@hall.com"
     },
     {
       "id": 2,
       "name": "Lindsay Vanderberg",
-      "address": "584 10th Avenue"
+      "address": "584 10th Avenue",
+      "email": "lindsay@vanderberg.com"
     },
     {
       "id": 3,
       "name": "Cherice Toliver",
-      "address": "2021 East Main Street"
+      "address": "2021 East Main Street",
+      "email": "cherice@cherice.com"
     }
 ]
-
+# GET ALL CUSTOMERS AS AN ITERABLE LIST
+# ----------------
 def get_all_customers():
     return CUSTOMERS
 
 # Function with a single parameter
 
-
+# GET CUSTOMER BY ID
+# ----------------
 def get_single_customer(id):
     # Variable to hold the found animal, if it exists
     requested_customer= None
@@ -36,7 +41,8 @@ def get_single_customer(id):
             requested_customer = customer
 
     return requested_customer
-
+# CREATE CUSTOMER
+# ----------------
 def create_customer(customer):
   max_id = CUSTOMERS[-1]["id"]
 
@@ -47,7 +53,8 @@ def create_customer(customer):
   CUSTOMERS.append(customer)
 
   return customer
-
+# DELETE CUSTOMER
+# ----------------
 def delete_customer(id):
   customer_index = -1
 
@@ -57,3 +64,11 @@ def delete_customer(id):
 
   if customer_index >= 0:
     CUSTOMERS.pop(customer_index)  
+
+# UPDATE CUSTOMER
+# ----------------
+def update_customer(id, new_customer):
+  for index, customer in enumerate(CUSTOMERS):
+    if customer["id"] == id:
+      CUSTOMERS[index] = new_customer
+      break

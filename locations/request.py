@@ -78,3 +78,4 @@ def delete_location(id):
     if location_index >= 0:
         LOCATIONS.pop(location_index)
 
+
