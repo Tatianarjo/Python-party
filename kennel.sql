@@ -67,3 +67,6 @@ SELECT
     a.customer_id
 FROM animal a
 WHERE a.id = 2
+
+SELECT * 
+FROM Location;
