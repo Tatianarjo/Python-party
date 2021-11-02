@@ -68,5 +68,3 @@ SELECT
 FROM animal a
 WHERE a.id = 2
 
-SELECT * 
-FROM Location;
