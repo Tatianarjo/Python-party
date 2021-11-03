@@ -1,5 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from animals import get_all_animals, get_single_animal, create_animal, delete_animal, update_animal, get_animals_by_locationId
+from animals import get_all_animals, get_single_animal, create_animal, delete_animal, update_animal, get_animals_by_locationId, get_animals_by_status
 import json
 from locations import get_all_locations, get_single_location, create_location, delete_location, update_location
 from employees import get_all_employees, get_single_employee, create_employee, delete_employee, get_employees_by_locationId
@@ -89,6 +89,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         # `/resource?parameter=value`
         #http://localhost:8088/animals?location_id=1
         #http://localhost:8088/employees?location_id=1
+        #http://localhost:8088/animals?status=Treatment
         elif len(parsed) == 3:
             ( resource, key, value ) = parsed
 
@@ -103,8 +104,11 @@ class HandleRequests(BaseHTTPRequestHandler):
 
             elif key == "location_id" and resource == "employees":
                 response = get_employees_by_locationId(value)
+            elif key =="status" and resource == "animals":
+                response = get_animals_by_status(value)
         self.wfile.write(response.encode())
 
+# The above is where I am filtering between what the response is asking for
     # Here's a method on the class that overrides the parent's method.
     # It handles any POST request.
     def do_POST(self):
