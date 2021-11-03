@@ -68,3 +68,8 @@ SELECT
 FROM animal a
 WHERE a.id = 2
 
+SELECT 
+
+e. id,
+e. name
+FROM employee e;
