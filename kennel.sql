@@ -73,3 +73,5 @@ SELECT
 e. id,
 e. name
 FROM employee e;
+
+INSERT INTO `Animal` VALUES (null, "Daps", "Kennel", "Boxer", 2, 2);
